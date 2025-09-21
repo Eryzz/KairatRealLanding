@@ -1,15 +1,20 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
 import Image from "next/image";
-import {Box, Button, Typography, IconButton, CircularProgress} from '@mui/material';
+import { motion } from 'framer-motion';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import {Box, Button, Typography, IconButton, CircularProgress, Dialog} from '@mui/material';
 import Marquee from "react-fast-marquee";
+import Slider from "react-slick";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import StopIcon from "@mui/icons-material/Stop";
+import CloseIcon from '@mui/icons-material/Close';
 import ProductCard from "@/app/card";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const MotionImage = motion.create(Image);
 const MotionBox = motion.create(Box);
@@ -24,6 +29,7 @@ export default function Page() {
     const theme = useTheme();
     const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
     const isSmUp = useMediaQuery(theme.breakpoints.down('sm'));
+    const isTallScreen = useMediaQuery('(min-height:800px)');
 
     const audioRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -31,6 +37,8 @@ export default function Page() {
     const [loading, setLoading] = useState(true);
     const [loadedCount, setLoadedCount] = useState(0);
     const totalToLoad = 6
+
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         if (loadedCount >= totalToLoad) {
@@ -72,6 +80,14 @@ export default function Page() {
             setMousePos({ x, y });
         }
     };
+
+    const handleOpen = () =>{
+        setOpen(true);
+    }
+
+    const handleClose = () =>{
+        setOpen(false);
+    }
 
     const tickerText = "Поддержи команду своей атрибутикой! Стильный шарф и бант для болельщиков! 🚀 Доставка 1–2 дня! 🛒 Количество ограничено!";
 
@@ -156,7 +172,7 @@ export default function Page() {
                     position: 'absolute',
                     top: 20,
                     width: '100%',
-                    gap: '12px'
+                    gap: '8px'
                 }}>
                 <Box sx={{
                     display: 'flex',
@@ -196,9 +212,11 @@ export default function Page() {
                                    zIndex: 1}}/>
                     </Box>
                 </Box>
-                <Typography variant='body1' fontSize='18px' fontFamily='Champions'>
-                    23 сентября 17:00 | Центральный стадион г. Алматы
-                </Typography>
+                {isTallScreen && (
+                    <Typography variant='body1' fontSize={{xs: '15px', sm: '20px'}} fontFamily='Champions' width={"70%"}>
+                        23 сентября 17:00 | Центральный стадион г.Алматы
+                    </Typography>
+                )}
             </MotionBox>
 
 
@@ -215,7 +233,7 @@ export default function Page() {
                     justifyContent: 'center',
                     alignItems: 'center',
                     gap: '8px',
-                    height: '88vh',
+                    height: '86vh',
                     top: '1vh'
             }}>
 
@@ -350,7 +368,7 @@ export default function Page() {
                     variant="contained"
                     color="primary"
                     size='small'
-                    //onClick={}
+                    onClick={handleOpen}
                     sx={{
                         display: {xs: 'block', sm: 'none'},
                         borderRadius: 3,
@@ -360,7 +378,7 @@ export default function Page() {
                         fontSize: '1rem',
                     }}
                 >
-                    Купить
+                    Смотреть товары
                 </Button>
 
             </MotionBox>
@@ -392,15 +410,109 @@ export default function Page() {
                 </Marquee>
             </Box>
 
-            <Box sx={{
-                position: 'absolute',
-                right: "20px",
-                bottom: {xs: "40px", sm: "60px", lg: '80px'},
-                width: "120px",
-                height: "100px"
-            }}>
-                <Image src={'/LogoBaza.jpg'} alt={'blabla'} fill style={{objectFit: "contain"}}/>
-            </Box>
+
+            {/*LogoBaza*/}
+
+            {isTallScreen && (
+                <MotionBox
+                    initial={{ opacity: 0, y: 50}}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    sx={{
+                        position: 'absolute',
+                        right: "20px",
+                        bottom: {xs: "40px", sm: "60px", lg: '80px'},
+                        width: "120px",
+                        height: "100px"
+                }}>
+                    <Image src={'/LogoBaza.jpg'} alt={'blabla'} fill style={{objectFit: "contain"}}/>
+                </MotionBox>
+            )}
+
+            {/* Модалка */}
+            {isSmUp && (
+                <Dialog
+                    open={open}
+                    onClose={handleClose}
+                    fullWidth
+                    PaperProps={{
+                        sx: {
+                            paddingTop: '58px',
+                            paddingX: 2,
+                            borderRadius: 5,
+                            background: "#0f172a",
+                            color: "white",
+                            position: 'relative',
+                            height: 400,
+                            maxWidth: 350,
+                        },
+                    }}
+                >
+                    <Slider
+                        dots={true}
+                        infinite={true}
+                        slidesToShow={1}
+                        slidesToScroll={1}
+                        arrows={false}
+                        centerMode={true}
+                        centerPadding="0"
+                        appendDots={(dots) => (
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    mt: '8px', // отступ сверху от карточек
+                                    "& ul": {
+                                        margin: 0,
+                                        padding: 0,
+                                        display: "flex !important",   // делаем flex
+                                        justifyContent: "center",
+                                        gap: "5px",                   // расстояние между точками
+                                    },
+                                    "& li": {
+                                        width: "auto",
+                                        height: "auto",
+                                    },
+                                    "& .slick-active div": {
+                                        background: "white !important", // активная
+                                    },
+                                }}
+                            >
+                                <ul>{dots}</ul>
+                            </Box>
+                        )}
+                        customPaging={() => (
+                            <div
+                                style={{
+                                    width: "6px",
+                                    height: "6px",
+                                    borderRadius: "50%",
+                                    background: "grey",
+                                }}
+                            />
+                        )}
+                    >
+                        <Box width={'100%'} display="flex" justifyContent="center" p={2}>
+                            <ProductCard
+                                onBuy={'https://kaspi.kz/shop/p/sharf-30351263-591411006-poliester-140-x-14-sm-145935179/?c=196243100&m=6467049&sr=26'}
+                                sx={{ width: '100%', height: 250 }}
+                            />
+                        </Box>
+                        <Box width={'100%'} display="flex" justifyContent="center" p={2}>
+                            <ProductCard
+                                onBuy={'https://kaspi.kz/shop/p/obodok-bant-1-sht-mul-tikolor-145947974/?c=196243100&m=6467049&sr=23'}
+                                sx={{ width: '100%', height: 250 }}
+                            />
+                        </Box>
+                    </Slider>
+
+                    <Box display="flex" justifyContent="center" position={'absolute'} top={15} right={15}>
+                        <IconButton onClick={handleClose}>
+                            <CloseIcon sx={{color: 'white'}}/>
+                        </IconButton>
+                    </Box>
+                </Dialog>
+            )}
 
             {loading &&(
                 <Box
