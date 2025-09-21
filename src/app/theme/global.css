@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "Swis";
+    src: url("swis721.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Champions";
+    src: url("champions.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
