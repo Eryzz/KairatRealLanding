@@ -1,8 +1,9 @@
 'use client';
 
+import Image from "next/image";
 import { Paper, Box, Button } from '@mui/material';
 
-export default function ProductCard({ image, onBuy, sx }) {
+export default function ProductCard({ image, alt, onBuy, sx }) {
     return (
         <Paper
             elevation={6}
@@ -12,6 +13,7 @@ export default function ProductCard({ image, onBuy, sx }) {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
+                gap: "8px",
                 justifyContent: 'space-between',
                 p: 2,
                 background: "#ffffff",
@@ -20,19 +22,24 @@ export default function ProductCard({ image, onBuy, sx }) {
                 ...sx
             }}
         >
-            {/* Картинка */}
             <Box
-                component="img"
-                src={image}
-                alt="Товар"
                 sx={{
-                    maxWidth: '100%',
-                    height: 'auto',
-                    flexGrow: 1,
-                    objectFit: 'contain',
-                    mb: 2,
-                }}
-            />
+                    //border: 'solid 1px #A2A2A2FF',
+                    //borderRadius: 3,
+                    width: '100%',
+                    height: "100%",
+                    position: 'relative'
+                }}>
+                {/* Картинка */}
+                <Image
+                    src={image}
+                    alt={alt}
+                    fill
+                    style={{
+                        objectFit: "contain",
+                        zIndex: 1}}
+                />
+            </Box>
 
             {/* Кнопка CTA */}
             <Button

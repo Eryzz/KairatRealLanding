@@ -30,13 +30,14 @@ export default function Page() {
     const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
     const isSmUp = useMediaQuery(theme.breakpoints.down('sm'));
     const isTallScreen = useMediaQuery('(min-height:800px)');
+    const isSmallScreen = useMediaQuery('(max-height:600px)');
 
     const audioRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
     const [loading, setLoading] = useState(true);
     const [loadedCount, setLoadedCount] = useState(0);
-    const totalToLoad = 6
+    const totalToLoad = 5
 
     const [open, setOpen] = useState(false);
 
@@ -46,12 +47,12 @@ export default function Page() {
 
             if (audioRef.current) {
                 audioRef.current.volume = 0.3;
-                // audioRef.current
-                //     .play()
-                //     .then(() => setIsPlaying(true))
-                //     .catch(() => {
-                //         setIsPlaying(false);
-                //     });
+                audioRef.current
+                    .play()
+                    .then(() => setIsPlaying(true))
+                    .catch(() => {
+                        setIsPlaying(false);
+                    });
             }
         }
 
@@ -148,7 +149,7 @@ export default function Page() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1 }}
                 src={"/spotlights.png"}
-                alt={'aaa'}
+                alt={'Реал Мадрид Кайрат Центральный стадион футбол'}
                 onLoadingComplete = {handleLoaded}
                 fill
                 style={{
@@ -184,7 +185,7 @@ export default function Page() {
                 }}>
                     <Box width={{xs: '65px',sm: '100px'}} height={'100%'} position={'relative'}>
                         <Image src={'/Kairat.png'}
-                               alt={"blabla"}
+                               alt={"Футбольный Клуб Кайрат"}
                                onLoadingComplete = {handleLoaded}
                                fill
                                style={{
@@ -195,7 +196,7 @@ export default function Page() {
                     </Box>
                     <Box width={{xs: '65px',sm: '100px'}} height={'100%'} position={'relative'}>
                         <Image src={'/uefaLogo.png'}
-                               alt={"blabla"}
+                               alt={"Лига чемпионов"}
                                onLoadingComplete = {handleLoaded}
                                fill
                                style={{
@@ -204,7 +205,7 @@ export default function Page() {
                     </Box>
                     <Box width={{xs: '65px',sm: '100px'}} height={'100%'} position={'relative'}>
                         <Image src={'/RealMadrid.png'}
-                               alt={"blabla"}
+                               alt={"Футбольный Клуб Реал Мадрид"}
                                onLoadingComplete = {handleLoaded}
                                fill
                                style={{
@@ -233,7 +234,7 @@ export default function Page() {
                     justifyContent: 'center',
                     alignItems: 'center',
                     gap: '8px',
-                    height: '86vh',
+                    height: '84vh',
                     top: '1vh'
             }}>
 
@@ -273,6 +274,8 @@ export default function Page() {
                         }}
                     >
                         <ProductCard
+                            image={'/Warf.png'}
+                            alt={'Шарф с атрибутикой Кайрат Реал Мадрид'}
                             onBuy={'https://kaspi.kz/shop/p/sharf-30351263-591411006-poliester-140-x-14-sm-145935179/?c=196243100&m=6467049&sr=26'}
                             sx={{
                                 width: {xs: '250px', md: '300px', lg: '350px', xl:'400px', xxl:'450px'},
@@ -295,7 +298,7 @@ export default function Page() {
                     >
                         <Image
                             src={"/FootballFan2.png"}
-                            alt={"blabla"}
+                            alt={"Реал Мадрид Кайрат Центральный стадион футбол лига чемпионов"}
                             onLoadingComplete = {handleLoaded}
                             fill
                             style={{
@@ -316,6 +319,8 @@ export default function Page() {
                         }}
                     >
                         <ProductCard
+                            image={'/Obodok.png'}
+                            alt={'Ободок с атрибутикой Кайрат Реал Мадрид'}
                             onBuy={'https://kaspi.kz/shop/p/obodok-bant-1-sht-mul-tikolor-145947974/?c=196243100&m=6467049&sr=23'}
                             sx={{
                                 width: {xs: '250px', md: '300px', lg: '350px', xl:'400px', xxl:'450px'},
@@ -335,16 +340,16 @@ export default function Page() {
                         position: 'relative',
                         display: {xs: 'block', sm: 'none'},
                         width: '100%',
-                        height: '250px',
+                        height: '100%',
                     }}
                 >
                     <Image
                         src={"/FootballFan2.png"}
-                        alt={"blabla"}
+                        alt={"Реал Мадрид Кайрат Центральный стадион футбол лига чемпионов"}
                         onLoadingComplete = {handleLoaded}
                         fill
                         style={{
-                            objectFit: "contain",
+                            objectFit: "cover",
                             transform: "translateX(15px)",
                             zIndex: 1}}
                     />
@@ -376,6 +381,7 @@ export default function Page() {
                         minWidth: '300px',
                         py: 1.5,
                         fontSize: '1rem',
+                        marginBottom: '20px'
                     }}
                 >
                     Смотреть товары
@@ -494,12 +500,16 @@ export default function Page() {
                     >
                         <Box width={'100%'} display="flex" justifyContent="center" p={2}>
                             <ProductCard
+                                image={'/Warf.png'}
+                                alt={'Шарф с атрибутикой Кайрат Реал Мадрид'}
                                 onBuy={'https://kaspi.kz/shop/p/sharf-30351263-591411006-poliester-140-x-14-sm-145935179/?c=196243100&m=6467049&sr=26'}
                                 sx={{ width: '100%', height: 250 }}
                             />
                         </Box>
                         <Box width={'100%'} display="flex" justifyContent="center" p={2}>
                             <ProductCard
+                                image={'/Obodok.png'}
+                                alt={'Ободок с атрибутикой Кайрат Реал Мадрид'}
                                 onBuy={'https://kaspi.kz/shop/p/obodok-bant-1-sht-mul-tikolor-145947974/?c=196243100&m=6467049&sr=23'}
                                 sx={{ width: '100%', height: 250 }}
                             />
