@@ -227,7 +227,7 @@ export default function Page() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 sx={{
-                    mb: {xs: '40px', sm: 0},
+                    mb: {xs: '40px', sm: '80px'},
                     position: 'relative',
                     display: {xs: 'flex', sm: 'block'},
                     flexDirection: 'column',
