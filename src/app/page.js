@@ -12,6 +12,7 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import StopIcon from "@mui/icons-material/Stop";
 import CloseIcon from '@mui/icons-material/Close';
 import ProductCard from "@/app/card";
+import GetURL from "@/app/utils/whatsappAPI";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -23,6 +24,15 @@ function getRandomOffset(X) {
     // возвращает случайное значение от -X до +X
     return Math.floor(Math.random() * (2 * X + 1)) - X;
 }
+
+const phone = '77780999918'
+const message =
+    ['Здравствуйте! 👋\n' +
+    'Я пишу вам с сайта.\n' +
+    'Хотелось бы оформить заказ: ШАРФ',
+    'Здравствуйте! 👋\n' +
+    'Я пишу вам с сайта.\n' +
+    'Хотелось бы оформить заказ: БАНТ']
 
 export default function Page() {
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -276,7 +286,8 @@ export default function Page() {
                         <ProductCard
                             image={'/Warf.png'}
                             alt={'Шарф с атрибутикой Кайрат Реал Мадрид'}
-                            onBuy={'https://kaspi.kz/shop/p/sharf-30351263-591411006-poliester-140-x-14-sm-145935179/?c=196243100&m=6467049&sr=26'}
+                            onBuy={GetURL(phone, message[0])}
+                            //onBuy={'https://kaspi.kz/shop/p/sharf-30351263-591411006-poliester-140-x-14-sm-145935179/?c=196243100&m=6467049&sr=26'}
                             sx={{
                                 width: {xs: '250px', md: '300px', lg: '350px', xl:'400px', xxl:'450px'},
                                 height: {xs: '250px', md: '300px',lg: '350px', xl:'400px', xxl:'450px'},
@@ -321,7 +332,8 @@ export default function Page() {
                         <ProductCard
                             image={'/Obodok.png'}
                             alt={'Ободок с атрибутикой Кайрат Реал Мадрид'}
-                            onBuy={'https://kaspi.kz/shop/p/obodok-bant-1-sht-mul-tikolor-145947974/?c=196243100&m=6467049&sr=23'}
+                            onBuy={GetURL(phone, message[1])}
+                            //onBuy={'https://kaspi.kz/shop/p/obodok-bant-1-sht-mul-tikolor-145947974/?c=196243100&m=6467049&sr=23'}
                             sx={{
                                 width: {xs: '250px', md: '300px', lg: '350px', xl:'400px', xxl:'450px'},
                                 height: {xs: '250px', md: '300px', lg: '350px', xl:'400px', xxl:'450px'},
@@ -502,7 +514,8 @@ export default function Page() {
                             <ProductCard
                                 image={'/Warf.png'}
                                 alt={'Шарф с атрибутикой Кайрат Реал Мадрид'}
-                                onBuy={'https://kaspi.kz/shop/p/sharf-30351263-591411006-poliester-140-x-14-sm-145935179/?c=196243100&m=6467049&sr=26'}
+                                onBuy={GetURL(phone, message[0])}
+                                //onBuy={'https://kaspi.kz/shop/p/sharf-30351263-591411006-poliester-140-x-14-sm-145935179/?c=196243100&m=6467049&sr=26'}
                                 sx={{ width: '100%', height: 250 }}
                             />
                         </Box>
@@ -510,7 +523,8 @@ export default function Page() {
                             <ProductCard
                                 image={'/Obodok.png'}
                                 alt={'Ободок с атрибутикой Кайрат Реал Мадрид'}
-                                onBuy={'https://kaspi.kz/shop/p/obodok-bant-1-sht-mul-tikolor-145947974/?c=196243100&m=6467049&sr=23'}
+                                onBuy={GetURL(phone, message[1])}
+                                //onBuy={'https://kaspi.kz/shop/p/obodok-bant-1-sht-mul-tikolor-145947974/?c=196243100&m=6467049&sr=23'}
                                 sx={{ width: '100%', height: 250 }}
                             />
                         </Box>
