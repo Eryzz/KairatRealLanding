@@ -297,7 +297,7 @@ export default function Page() {
                         }}
                     >
                         <Image
-                            src={"/FootballFan2.png"}
+                            src={"/FootballFan3.png"}
                             alt={"Реал Мадрид Кайрат Центральный стадион футбол лига чемпионов"}
                             onLoadingComplete = {handleLoaded}
                             fill
@@ -344,7 +344,7 @@ export default function Page() {
                     }}
                 >
                     <Image
-                        src={"/FootballFan2.png"}
+                        src={"/FootballFan3.png"}
                         alt={"Реал Мадрид Кайрат Центральный стадион футбол лига чемпионов"}
                         onLoadingComplete = {handleLoaded}
                         fill
