@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Paper, Box, Button } from '@mui/material';
 
-export default function ProductCard({ image, alt, onBuy, sx }) {
+export default function ProductCard({ image, alt, onBuy, onContact, sx }) {
     return (
         <Paper
             elevation={6}
@@ -53,11 +53,37 @@ export default function ProductCard({ image, alt, onBuy, sx }) {
                 sx={{
                     borderRadius: 3,
                     fontWeight: 700,
-                    py: 1.5,
-                    fontSize: '1rem',
+                    py: 1.2,
+                    fontSize: '0.9rem',
                 }}
             >
                 Купить
+            </Button>
+
+            {/* Кнопка CTA */}
+            <Button
+                className='CTA'
+                variant="outlined"
+                color="primary"
+                target="_blank"
+                rel="noopener noreferrer"
+                href={onContact}
+                fullWidth
+                sx={{
+                    borderRadius: 3,
+                    fontWeight: 700,
+                    py: 1.2,
+                    fontSize: '0.9rem',
+                    color: '#464646',        // custom text color
+                    borderColor: '#464646',  // custom outline color
+                    '&:hover': {
+                        borderColor: '#181818', // darker on hover
+                        color: '#181818',
+                        backgroundColor: 'rgba(108,108,108,0.15)', // optional hover background
+                    },
+                }}
+            >
+                Связаться с нами
             </Button>
         </Paper>
     );

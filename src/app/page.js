@@ -286,8 +286,8 @@ export default function Page() {
                         <ProductCard
                             image={'/Warf.png'}
                             alt={'Шарф с атрибутикой Кайрат Реал Мадрид'}
-                            onBuy={GetURL(phone, message[0])}
-                            //onBuy={'https://kaspi.kz/shop/p/sharf-30351263-591411006-poliester-140-x-14-sm-145935179/?c=196243100&m=6467049&sr=26'}
+                            onContact={GetURL(phone, message[0])}
+                            onBuy={'https://kaspi.kz/shop/p/sharf-30351263-591411006-poliester-140-x-14-sm-145935179/?c=196243100&m=6467049&sr=26'}
                             sx={{
                                 width: {xs: '250px', md: '300px', lg: '350px', xl:'400px', xxl:'450px'},
                                 height: {xs: '250px', md: '300px',lg: '350px', xl:'400px', xxl:'450px'},
@@ -332,8 +332,8 @@ export default function Page() {
                         <ProductCard
                             image={'/Obodok.png'}
                             alt={'Ободок с атрибутикой Кайрат Реал Мадрид'}
-                            onBuy={GetURL(phone, message[1])}
-                            //onBuy={'https://kaspi.kz/shop/p/obodok-bant-1-sht-mul-tikolor-145947974/?c=196243100&m=6467049&sr=23'}
+                            onContact={GetURL(phone, message[1])}
+                            onBuy={'https://kaspi.kz/shop/p/obodok-bant-1-sht-mul-tikolor-145947974/?c=196243100&m=6467049&sr=23'}
                             sx={{
                                 width: {xs: '250px', md: '300px', lg: '350px', xl:'400px', xxl:'450px'},
                                 height: {xs: '250px', md: '300px', lg: '350px', xl:'400px', xxl:'450px'},
@@ -514,8 +514,8 @@ export default function Page() {
                             <ProductCard
                                 image={'/Warf.png'}
                                 alt={'Шарф с атрибутикой Кайрат Реал Мадрид'}
-                                onBuy={GetURL(phone, message[0])}
-                                //onBuy={'https://kaspi.kz/shop/p/sharf-30351263-591411006-poliester-140-x-14-sm-145935179/?c=196243100&m=6467049&sr=26'}
+                                onContact={GetURL(phone, message[0])}
+                                onBuy={'https://kaspi.kz/shop/p/sharf-30351263-591411006-poliester-140-x-14-sm-145935179/?c=196243100&m=6467049&sr=26'}
                                 sx={{ width: '100%', height: 250 }}
                             />
                         </Box>
@@ -523,8 +523,8 @@ export default function Page() {
                             <ProductCard
                                 image={'/Obodok.png'}
                                 alt={'Ободок с атрибутикой Кайрат Реал Мадрид'}
-                                onBuy={GetURL(phone, message[1])}
-                                //onBuy={'https://kaspi.kz/shop/p/obodok-bant-1-sht-mul-tikolor-145947974/?c=196243100&m=6467049&sr=23'}
+                                onContact={GetURL(phone, message[1])}
+                                onBuy={'https://kaspi.kz/shop/p/obodok-bant-1-sht-mul-tikolor-145947974/?c=196243100&m=6467049&sr=23'}
                                 sx={{ width: '100%', height: 250 }}
                             />
                         </Box>
